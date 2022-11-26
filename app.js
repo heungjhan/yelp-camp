@@ -34,9 +34,9 @@ db.once("open", () => {
 
 const app = express();
 
-app.engine('ejs', ejsMate);
+app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -133,7 +133,6 @@ passport.deserializeUser(User.deserializeUser())
 
 
 app.use((req, res, next) => {
-    console.log(req.query)
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -145,7 +144,7 @@ app.use('/campgrounds', campgroundsRoutes)
 app.use('/campgrounds/:id/reviews', reviewsRoutes)
 
 app.get('/', (req, res) => {
-    res.render('views/index.ejs')
+    res.render('home')
 })
 
 app.all('*', (req, res, next) => {
